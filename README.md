@@ -121,6 +121,27 @@ Responsivas FINAL/
 5.  Verifica en la terminal del backend los logs de registro en Excel y generación del Word de devs.
 6.  Revisa las carpetas `server/data/` y `server/generated_dev_docs/` para encontrar los archivos generados.
 
+## Cómo Probar el MVP
+
+Esta sección describe cómo probar la funcionalidad implementada en la versión MVP:
+
+1.  **Asegúrate de que el Backend y Frontend estén Corriendo:** Sigue los pasos de la sección "Ejecución del Proyecto" para iniciar ambos servidores.
+2.  **Accede a la Aplicación:** Abre tu navegador en `http://localhost:3000`.
+3.  **Elementos de Prueba en la Interfaz (Solo Desarrollo):**
+    *   En la página de inicio de sesión (`/login`), notarás un recuadro titulado "👥 Usuarios de Prueba Disponibles" con una lista de credenciales predefinidas (RPE, Contraseña, Usuario). También verás un icono de engranaje "⚙️ Acceso Desarrollo".
+    *   **NOTA IMPORTANTE:** Estos elementos de interfaz (el recuadro de usuarios de prueba y el icono "Acceso Desarrollo") están presentes **exclusivamente en el entorno de desarrollo (cuando `NODE_ENV` es `'development'`)** para facilitar el testeo rápido y la navegación. Su visibilidad está controlada por lógica condicional en el código del frontend.
+    *   En las versiones de producción (cuando `NODE_ENV` es `'production'`), estos elementos **no serán renderizados** y, por lo tanto, no serán visibles para el usuario final.
+4.  **Usa los Logins de Prueba:** Utiliza cualquiera de las credenciales del recuadro "Usuarios de Prueba Disponibles" y haz clic en la fila correspondiente (gracias a la funcionalidad de auto-completar indicada por "💡 Haga clic en cualquier fila para auto-completar los campos") o ingrésalas manualmente para acceder al dashboard.
+5.  **Completa el Formulario:** Navega al dashboard (`/dashboard`) y completa el formulario multi-paso (Pasos 1 a 4) con datos de prueba.
+6.  **Envía la Solicitud:** En el último paso (P4 - Revisión), haz clic en "Enviar Solicitud".
+7.  **Verifica la Confirmación:** Si la solicitud fue procesada exitosamente por el backend, serás redirigido a la página de confirmación (`/confirmacion-subida`) mostrando el ID único generado para tu solicitud.
+8.  **Verifica los Archivos Generados (Backend):**
+    *   Revisa el archivo `@file:./server/data/log_solicitudes_responsivas.xlsx`. Debería haberse añadido una nueva fila con los datos de la solicitud, incluyendo los sistemas/roles seleccionados y el `solicitudId`.
+    *   Revisa la carpeta `@file:./server/generated_dev_docs/`. Debería haberse generado un archivo Word (`SolicitudDev_*.docx`) con los datos simples rellenados, usando la nomenclatura acordada.
+9.  **Probar Manejo de Errores (Opcional):** Aunque no hay UI específica en el frontend para mostrar errores detallados del backend más allá de un error de conexión general, si pruebas el endpoint del backend directamente (ej. con Postman o cURL) enviando un payload que no cumpla el esquema de Zod, deberías recibir una respuesta 400 con detalles del error de validación.
+
+Esta guía te permitirá verificar el correcto funcionamiento del flujo principal del MVP y la generación de los archivos de registro y para devs, teniendo en cuenta los elementos de prueba temporales.
+
 ## Puntos a Considerar (MVP)
 
 *   La persistencia de datos del formulario es solo en el estado del componente, no en `localStorage` ni en el backend antes de la solicitud final.

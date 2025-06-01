@@ -113,62 +113,69 @@ export default function LoginPage() {
               {isLoading ? "Iniciando..." : "Iniciar Sesión"}
             </Button>
           </form>
-          {/* Credenciales de prueba para desarrollo */}
-          <div className="mt-6 p-4 bg-cfe-green-very-light rounded-cfe border border-cfe-green/30">
-            <h4 className="font-semibold text-cfe-green mb-3 text-center">👥 Usuarios de Prueba Disponibles</h4>
-            <div className="space-y-2 text-xs">
-              <div className="grid grid-cols-3 gap-2 font-semibold text-cfe-black border-b pb-1">
-                <span>RPE</span>
-                <span>Contraseña</span>
-                <span>Usuario</span>
+
+          {/* Credenciales de prueba para desarrollo - Renderizar solo en development */}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-6 p-4 bg-cfe-green-very-light rounded-cfe border border-cfe-green/30">
+              <h4 className="font-semibold text-cfe-green mb-3 text-center">👥 Usuarios de Prueba Disponibles</h4>
+              <div className="space-y-2 text-xs">
+                <div className="grid grid-cols-3 gap-2 font-semibold text-cfe-black border-b pb-1">
+                  <span>RPE</span>
+                  <span>Contraseña</span>
+                  <span>Usuario</span>
+                </div>
+                <div
+                  className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
+                  onClick={() => handleQuickLogin("STD001", "123456")}
+                >
+                  <span>STD001</span>
+                  <span>123456</span>
+                  <span>María Elena R.</span>
+                </div>
+                <div
+                  className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
+                  onClick={() => handleQuickLogin("TEST001", "test123")}
+                >
+                  <span>TEST001</span>
+                  <span>test123</span>
+                  <span>Carlos Alberto H.</span>
+                </div>
+                <div
+                  className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
+                  onClick={() => handleQuickLogin("DEMO001", "demo")}
+                >
+                  <span>DEMO001</span>
+                  <span>demo</span>
+                  <span>Ana Patricia M.</span>
+                </div>
+                <div
+                  className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
+                  onClick={() => handleQuickLogin("USER001", "password123")}
+                >
+                  <span>USER001</span>
+                  <span>password123</span>
+                  <span>Juan Pérez G.</span>
+                </div>
               </div>
-              <div
-                className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
-                onClick={() => handleQuickLogin("STD001", "123456")}
-              >
-                <span>STD001</span>
-                <span>123456</span>
-                <span>María Elena R.</span>
-              </div>
-              <div
-                className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
-                onClick={() => handleQuickLogin("TEST001", "test123")}
-              >
-                <span>TEST001</span>
-                <span>test123</span>
-                <span>Carlos Alberto H.</span>
-              </div>
-              <div
-                className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
-                onClick={() => handleQuickLogin("DEMO001", "demo")}
-              >
-                <span>DEMO001</span>
-                <span>demo</span>
-                <span>Ana Patricia M.</span>
-              </div>
-              <div
-                className="grid grid-cols-3 gap-2 text-muted-foreground hover:bg-cfe-green/10 cursor-pointer p-1 rounded transition-colors"
-                onClick={() => handleQuickLogin("USER001", "password123")}
-              >
-                <span>USER001</span>
-                <span>password123</span>
-                <span>Juan Pérez G.</span>
-              </div>
+              <p className="text-xs text-muted-foreground mt-2 text-center">
+                💡 Haga clic en cualquier fila para auto-completar los campos
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
-              💡 Haga clic en cualquier fila para auto-completar los campos
-            </p>
-          </div>
-          <div className="mt-6 text-center">
-            <Button
-              variant="link"
-              onClick={handleDevAccess}
-              className="text-sm text-cfe-black hover:text-cfe-green p-0 h-auto flex items-center"
-            >
-              <Settings className="w-4 h-4 mr-2" />
-              Acceso Desarrollo
-            </Button>
-          </div>
+          )}
+
+          {/* Botón de Acceso Desarrollo - Renderizar solo en development */}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-6 text-center">
+              <Button
+                variant="link"
+                onClick={handleDevAccess}
+                className="text-sm text-cfe-black hover:text-cfe-green p-0 h-auto flex items-center"
+              >
+                <Settings className="w-4 h-4 mr-2" />
+                Acceso Desarrollo
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
