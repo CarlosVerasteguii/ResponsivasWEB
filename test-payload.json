@@ -1,0 +1,25 @@
+{
+    "solicitante": {
+        "rpe": "123456",
+        "nombre": "Juan Pérez",
+        "correo": "juan.perez@cfe.mx",
+        "areaSeleccionada": "TICSI",
+        "puestoIngresado": "Analista"
+    },
+    "jefe": {
+        "nombre": "María García",
+        "rpe": "789012",
+        "puesto": "Gerente"
+    },
+    "sistemasSeleccionados": [
+        {
+            "nombreDelSistema": "SAP",
+            "rolDelUsuario": "Usuario"
+        },
+        {
+            "nombreDelSistema": "Oracle",
+            "rolDelUsuario": "Administrador"
+        }
+    ],
+    "fechaSolicitud": "2024-06-01T00:00:00.000Z"
+}

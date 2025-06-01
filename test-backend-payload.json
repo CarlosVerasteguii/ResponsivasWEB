@@ -1,0 +1,21 @@
+{
+    "solicitante": {
+        "rpe": "TEST001",
+        "nombre": "Usuario Test",
+        "correo": "test@cfe.mx",
+        "areaSeleccionada": "TICSI",
+        "puestoIngresado": "Analista Test"
+    },
+    "jefe": {
+        "nombre": "Jefe Test",
+        "rpe": "JEFE001",
+        "puesto": "Gerente Test"
+    },
+    "sistemasSeleccionados": [
+        {
+            "nombreDelSistema": "SAP Test",
+            "rolDelUsuario": "Usuario Test"
+        }
+    ],
+    "fechaSolicitud": "2024-12-20T12:00:00.000Z"
+}

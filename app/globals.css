@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Blanco puro */
+    --foreground: 0 0% 3.9%; /* Casi Negro */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 152 100% 27%; /* cfe-green #008E5A */
+    --primary-foreground: 0 0% 100%; /* cfe-text-on-green #FFFFFF */
+
+    --secondary: 0 0% 6.7%; /* cfe-black #111111 */
+    --secondary-foreground: 0 0% 98%; /* Blanco o casi blanco hsl(0 0% 98%) */
+
+    --muted: 0 0% 96.1%; /* Gris claro para fondos de input alternativos */
+    --muted-foreground: 0 0% 45.1%; /* Gris medio para placeholders/texto ayuda */
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%; /* Rojo estándar */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%; /* Gris Claro sutil */
+    --input: 0 0% 89.8%; /* Mismo que border o muted */
+    --ring: 152 100% 27%; /* cfe-green #008E5A para focus rings */
+
+    --radius: 0.25rem; /* 4px según Guía CFE "ej. 4px" */
+  }
+
+  .dark {
+    /* Definir variables dark theme si es necesario, aunque la guía no lo especifica */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary, Secondary, Destructive, Muted, Accent, Border, Input, Ring se mantienen o ajustan */
+    --primary: 152 100% 27%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 98%; /* Invertido para dark mode */
+    --secondary-foreground: 0 0% 6.7%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Noto Sans", "Open Sans", "Lato", Arial, Helvetica, sans-serif;
+  }
+  h1 {
+    @apply text-2xl font-semibold text-cfe-black;
+  } /* ~24-28px, bold. Usando 2xl (24px) de Tailwind */
+  h2 {
+    @apply text-xl font-semibold text-cfe-black;
+  } /* ~20-24px */
+  h3 {
+    @apply text-lg font-semibold text-cfe-black;
+  } /* ~18-20px */
+  p,
+  label,
+  span,
+  div {
+    @apply text-sm;
+  } /* ~14-16px para texto base */
+}
+
+/* Estilos para placeholders */
+::placeholder {
+  @apply text-muted-foreground text-xs; /* ~12-14px */
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+}
+
+/* Estilo para scrollbars (opcional, pero mejora la estética) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: var(--radius);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: var(--radius);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / 0.3);
+}
